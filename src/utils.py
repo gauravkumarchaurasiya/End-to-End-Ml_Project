@@ -7,6 +7,7 @@ from src.logger import logging
 from sklearn.model_selection import GridSearchCV
 import dill
 from sklearn.metrics import r2_score
+
 def save_object(file_path,obj):
     try:
         dir_path = os.path.dirname(file_path)
@@ -49,6 +50,14 @@ def evaluate_models(X_train, y_train,X_test,y_test,models,param):
 
         return report
 
+    except Exception as e:
+        raise CustomException(e, sys)
+    
+    
+def load_object(file_path):
+    try:
+        with open(file_path,'rb') as f:
+            return dill.load(f)
     except Exception as e:
         raise CustomException(e, sys)
     
