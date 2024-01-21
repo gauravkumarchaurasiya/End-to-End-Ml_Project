@@ -4,4 +4,6 @@ seaborn
 seaborn
 numpy
 dill
+catboost
+xgboost
 -e .
